@@ -1,0 +1,1209 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+/* RESET CSS */
+
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root
+{
+    --primaria: #fff;
+    --secundaria: #0a0a6a;
+    --terciaria: #e53420;
+    --cinza: #f2f2f2;
+    --preto: #000;
+}
+
+a {
+    text-decoration: none;
+}
+
+thead
+{
+    pointer-events: none;
+    color: var(--secundaria);
+    font-weight: bold;
+}
+.contents {
+    display: flex;
+}
+
+.container
+{
+    position: relative;
+    width: 100%;
+}
+
+.navbar
+{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--secundaria);
+    border-left: 10px solid var(--secundaria);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.navbar.active
+{
+    width: 80px;
+    transition: 0.5s;
+}
+
+.navbar ul 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navbar ul li
+{
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navbar ul li:hover,
+.navbar ul li.hovered
+{
+    background: var(--primaria);
+}
+
+.navbar ul li:nth-child(1)
+{
+    margin-bottom: 70px;
+}
+
+.navbar ul li a
+{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--primaria);
+}
+
+.navbar ul li:hover a,
+.navbar ul li.hovered a
+{
+    color: var(--terciaria);
+}
+
+.navbar ul li a .icon
+{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.navbar ul li a .icon img
+{
+    width: 7em;
+    height: 7em;
+    filter: invert(99%) sepia(15%) saturate(194%) hue-rotate(213deg) brightness(117%) contrast(100%);
+    transition: 0.5s;
+}
+
+.navbar.active ul li a .icon img {
+    width: 5em;
+    height: 5em;
+    padding-right: 33%;
+    transition: 0.5s;
+}
+
+.navbar ul li a .icon .fa-solid
+{
+    font-size: 1em;
+}
+
+.navbar ul li:hover a .icon .fa-solid
+{
+    font-size: 1.2em;
+}
+
+.navbar ul li:hover a .icon
+{
+    line-height: 60px;
+}
+.navbar ul li a .title
+{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+.navbar ul li a .title img
+{
+    margin-top: 36px;
+    display: block;
+    margin-right: 55px;
+    width: 8em;
+    position: relative;
+    filter: invert(99%) sepia(15%) saturate(194%) hue-rotate(213deg) brightness(117%) contrast(100%);
+}
+
+.navbar.active ul li a .title img
+{
+    display: none;
+}
+
+.navbar ul li:hover a::before,
+.navbar ul li.hovered a::before
+{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--primaria);
+}
+
+.navbar ul li:hover a::after,
+.navbar ul li.hovered a::after
+{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--primaria);
+}
+
+.main
+{
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--primaria);
+    transition: 0.5s;
+}
+
+.main.active
+{
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+.topbar 
+{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    background-color: #f2f2f2;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    padding: 0 10px;
+    background: var(--cinza);
+    border-bottom: 1px solid;
+}
+
+
+.toggle
+{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+.toggle .fa-solid
+{
+    font-size: 0.6em;
+}
+
+.search
+{
+    position: relative;
+    width: 400px;
+    margin: 0 10px ;
+}
+
+.search label
+{
+    position: relative;
+    width: 100%;
+}
+
+.search label input
+{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--preto);
+}
+
+.search label .fa-solid
+{
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 1.2em;
+}
+
+.user
+{
+    position: relative;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20em;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.main.active .topbar .user {
+    margin-right: 5em;
+    transition: 0.5s;
+}
+
+.user img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cardBox
+{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 5em;
+}
+
+.cardBox .card
+{
+    position: relative;
+    background: var(--cinza);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox.exp
+ {
+     grid-template-columns: repeat(1, 1fr) !important;
+}
+
+.cardBox.exp .card
+{
+    display: block;
+}
+
+.cardBox .card .icon8x 
+{
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: var(--secundaria);
+}
+
+.cardBox .card .graphs .cardName
+{
+    margin-top: 50px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--secundaria);
+}
+
+.details
+{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.details .projectlist
+{
+    position: relative;
+    display: grid;
+    min-height: 250px;
+    background: var(--cinza);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    padding: 2em;
+}
+
+.details .projectlist.mes table tr td:first-child
+ {
+     text-align: start;
+ }
+
+ .details .projectlist.mes table tr td
+ {
+     text-align: center;
+ }
+
+.cardHeader
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1em;
+}
+
+.cardHeader h2 
+{
+    font-weight: 600;
+    color: var(--secundaria);
+}
+
+.btn
+{
+    position: relative;
+    background: var(--terciaria);
+    color: var(--cinza);
+    border-radius: 1em;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    outline: none;
+}
+
+.details table
+{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.details table thead td
+{
+    font-weight: 600;
+}
+
+.details .projectlist table tr:last-child
+{
+    border-bottom: none;
+}
+.details .projectlist table tbody tr:hover
+{
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.details .projectlist table tr td
+{
+    padding: 10px;
+    text-align: center;
+}
+
+.details .projectlist table tr td:first-child
+{
+    text-align: center;
+}
+
+.details .projectlist table tr td:nth-child(5)
+{
+    text-align: center;
+}
+
+.status-complete
+{
+    padding: 2px 4px;
+    background: var(--secundaria);
+    color: var(--primaria);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.status-pending
+{
+    padding: 2px 4px;
+    background: #8de02c;
+    color: var(--primaria);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.status-waiting
+{
+    padding: 2px 4px;
+    background: #f9ca3f;
+    color: var(--primaria);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.status-paused
+{
+    padding: 2px 4px;
+    background: red;
+    color: var(--primaria);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.red-line 
+{
+    padding: 20px;
+    background: var(--terciaria);
+}
+
+
+.addnew
+ {
+     margin-top: 7em;
+ }
+ 
+ .addnew h1
+ {
+     margin-left: 1em;
+     text-align: center;
+     color: var(--secundaria);
+ }
+ 
+ .choices
+ {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    gap: 10%;
+    margin-left: 4em;
+    margin-top: 4em;
+    margin: 4em 0 0 4em;
+ }
+ 
+ .choices a 
+ {
+     color: var(--preto);
+ }
+ 
+ .choices .btn1,
+ .choices .btn2
+ {
+     padding: 4em 6em 4em 6em;
+     border-radius: 25px;
+     background: var(--cinza);
+     box-shadow: 35px 35px 0 10px var(--primaria);
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     transition: 0.5s;
+ }
+ 
+ .btn1 i,
+ .btn2 i 
+ {
+     font-size: 6em;
+ }
+ 
+ .btn1 p, 
+ .btn2 p
+ {
+     margin-top: 2em;
+     font-size: 1.5em;
+     font-weight: bold;
+     text-align: center;
+ }
+ 
+ .choices .btn1:hover,
+ .choices .btn2:hover
+ {
+    background: var(--secundaria);
+    cursor: pointer;
+    margin: 5px;
+    transition: 0.5s;
+    border: 1px solid;
+ }
+ 
+ .choices .btn1:hover i,
+ .choices .btn2:hover i,
+ .choices .btn1:hover p,
+ .choices .btn2:hover p
+ {
+     color: var(--primaria);
+ }
+ 
+ 
+ .progress
+ {
+     display: flex;
+ }
+ 
+ .progress-project
+ {
+     width: 50%;
+     height: 10px;
+     background: var(--terciaria);
+     padding: 2em;
+ }
+ 
+ .progress-project.agendar
+ {
+     width: 100%;
+     height: 10px;
+     background: var(--terciaria);
+     padding: 2em;
+     transition: 0.5s;
+ }
+ 
+ .progress-full.agendar
+ {
+     width: 0%;
+     height: 10px;
+     background-color: var(--cinza);
+     padding: 2em;
+ }
+ 
+ .contents 
+ {
+     margin-top: 2em;
+ }
+ 
+ .contents .container.mt-5 .title
+ {
+    display: flex;
+    justify-content: center;
+    margin-left: 30vw;
+    flex-direction: column;
+    color: var(--secundaria);  
+ }
+ 
+ .contents .container.mt-5 .title.func
+ {
+     margin-top: 40px;
+ }
+ 
+ .contents .container.mt-5 .title h1
+ {
+    margin-top: 1.5em;
+ }
+ 
+ .contents .container.mt-5 .title.func h1
+ {
+     margin-left: 8.5em;
+ }
+ 
+ .contents .container.mt-5 .title #agendar-projeto
+ {
+     margin-right: 4.9em;
+ }
+ 
+ .container.mt-5 .rows
+ {
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     margin-top: 2em;
+     margin-left: 17em;
+ }
+ 
+ .container.mt-5 .rows .row1,
+ .container.mt-5 .rows .row2,
+ .container.mt-5 .rows .row3,
+ .container.mt-5 .rows .row4
+ {
+     margin-bottom: 1.5em;
+ }
+ 
+ .container.mt-5 .rows .row1 input,
+ .container.mt-5 .rows .row3 input,
+ .container.mt-5 .rows .row4 input
+ {
+     width: 40em;
+     height: 2em;
+ }
+ 
+ .container.mt-5 .rows .row2 textarea
+ {
+     width: 40em;
+ }
+ 
+ .container.mt-5 .rows .row1 p,
+ .container.mt-5 .rows .row1 label,
+ .container.mt-5 .rows .row2 p,
+ .container.mt-5 .rows .row3 p,
+ .container.mt-5 .rows .row4 p,
+ .container.mt-5 .rows .row7
+ {
+     text-align: start;
+     margin: 0 0 5px 15px;
+     font-weight: bold;
+     color: var(--secundaria);
+ }
+ 
+ .container.mt-5 .rows .row5 
+ {
+     align-self: flex-end;
+     margin-right: 25px;
+ }
+ 
+ .container.mt-5 .rows .row5 a
+ {
+     color: var(--primaria);
+ }
+ 
+ .container.mt-5 .rows .row5 .butn p
+ {
+     margin-top: 25px;
+     padding: 15px;
+     border-radius: 25px;
+     background: var(--secundaria);
+     margin-bottom: 5px;
+ }
+
+ .btns{
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 25px;
+    background: var(--secundaria);
+    margin-bottom: 5px;
+    color: var(--primaria);
+}
+ 
+ .container.mt-5 .rows .row5 .butn .projeto
+ {
+     justify-content: center;
+ }
+ 
+ .ignore
+ {
+     display: flex;
+     align-items: center;
+     justify-content: flex-start;
+ }
+ 
+ .ignore p 
+ {
+     margin: 10 !important;
+ }
+ 
+ .ignore input
+ {
+     width: 1em !important;
+ }
+ 
+ .next
+ {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 0 8em 2em 0;
+ }
+ 
+ .next a
+ {
+     color: var(--primaria);
+     padding: 15px;
+     background: var(--secundaria);
+     border-radius: 25px;
+ }
+ 
+ .rows .row7 .offset-3.col-9 {
+     display: flex;
+     margin-bottom: 20px;
+ }
+ 
+ .rows .row7 .offset-3.col-9 label{
+     margin-right: 20px;
+ }
+ 
+ .rows .row7 .offset-3.col-9 .btn-group.mt-3 label
+ {
+     margin-right: 20px;
+ }
+ 
+.img-fluid{
+    position: relative;
+    right: 15px;
+    height: 100vh;
+    width: 35vw;
+}
+.login{
+    padding: 50px;
+    position: relative;
+    left: 50px;
+}
+
+.login input{
+    width: 300px;
+    height: 40px;
+}
+
+.login button a{
+    text-decoration: none;
+    color: white;
+}
+
+.login button{
+    border-radius: 30px;
+    border: none;
+    padding: 10px 80px;
+    color: var(--primaria);
+    background: var(--secundaria);
+    font-weight: bold;
+}
+
+.login h1{
+    font-family: 'Roboto';
+    font-weight: bold;
+    width: 90%;
+}
+
+.login h2{
+    font-family: 'Roboto';
+    font-weight: bold;
+}
+#pagina-login{
+    display: flex;
+    flex-direction: column;
+}
+#login {
+    display: flex;
+    flex-direction: row;
+}
+
+#login img {
+    width: 80vh;
+    height: 100vh;
+}
+#texto_bem_vindo{
+    align-self: center;
+    display: flex;
+    margin: 60px;
+
+}
+#texto_bem_vindo h1{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 38px;
+    text-align: center;
+
+}
+#login_texto{
+    display: flex;
+    justify-content:flex-start;
+    margin: 1px;
+}
+
+#login_texto h1 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 38px;
+}
+#indentifique_texto{
+    margin: 1px;
+}
+
+#indentifique_texto h1 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    
+}
+#exampleInputEmail1{
+    width: 499px;
+    height: 60px;
+    left: 804px;
+    top: 422px;
+}
+#exampleInputPassword1{
+    width: 499px;
+    height: 60px;
+    left: 804px;
+    top: 544px;
+}
+.botao_acessar{
+    width: 499px;
+    height: 60px;
+    background: #0A0A6A;
+    border: 1px solid #000000;
+    border-radius: 20px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #FFFFFF;
+}
+
+#Registro{
+    display: flex;
+    align-items: center;
+    margin: 19px;
+}
+
+.row 
+{
+    display: flex;
+}
+
+.col-6.login.mt-3 {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.col-6 {
+    display: contents;
+}
+
+/* ATRIBUIR FUNCIONÁRIOS */
+
+*
+{
+    box-sizing: border-box;
+}
+
+/* body
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.todo-container
+{
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10vh 0;
+}
+
+.status
+{
+    border-radius: 0 0 15px 15px;
+    width: 40%;
+    background-color: #f3f3f3;
+    position: relative;
+    padding: 60px 1rem 0.5rem;
+}
+
+.status:nth-child(even) 
+{
+    background-color: #e9e9e96b;
+}
+
+.status h1
+{
+    position: absolute;
+    border-radius: 15px 15px 0 0;
+    top: 0;
+    left: 0;
+    background-color: var(--secundaria);
+    text-align: center;
+    color: #f3f3f3;
+    margin: 0;
+    width: 100%;
+    padding: 0.5rem 1rem; 
+}
+
+#add_btn
+{
+    background-color: #fff;
+    border: none;
+    width: 100%;
+    font-size: 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: start;
+    padding: 0.5rem 1rem;
+}
+
+#add_btn:hover
+{
+    background-color: var(--secundaria);
+    color: var(--primaria);
+    font-weight: bold;
+    transition: 0.5s ease-in-out;
+}
+
+.todo 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: #fff;
+    box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 2px 4px; 
+    border-radius: 4px;
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.todo .close
+{
+    position: absolute;
+    right: 1rem;
+    top: 0.15rem;
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.todo .close:hover
+{
+    color: #343434;
+}
+
+#todo_input, 
+#todo_submit
+{
+    padding: 0.5rem 1rem;
+    width: 100%;
+    margin: 0.25rem;
+}
+
+#todo_submit
+{
+    background-color: #4caf50;
+    color: #f3f3f3;
+    font-size: 1.25rem;
+    border: none;
+}
+
+/* MODAL */
+
+#modal .btn 
+{
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+}
+
+#modal .btn:active
+{
+    transform: scale(0.9);
+}
+
+.modal-btn
+{
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--primaria);
+}
+
+.modal
+{
+    width: 450px;
+    position: fixed;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: top 0.5s ease-in-out;
+    border: 1px solid #ccc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 10px;
+    z-index: 3;
+    background-color: #fff;
+}
+
+.modal.active
+{
+    top: 50vh;
+}
+
+.header 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    font-size: 0.70em;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid #ccc;
+    color: var(--secundaria);
+}
+
+.body 
+{
+    padding: 1rem;
+}
+
+#overlay
+{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+}
+
+#overlay.active
+{
+    display: block;
+}
+
+.titlemodal {
+    color: var(--secundaria);
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+#datas 
+{
+    font-size: 0.9em;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 0 10px;
+}   
+
+.modal .body h4
+{
+    margin: 1em 0;
+    text-align: center;
+    color: var(--secundaria);
+}
+
+div#meses {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    gap: 15px 0;
+}
+
+.hrs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hrs input {
+    width: 4em;
+    margin: 0 5px;
+    border: 1px solid;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.save 
+{
+    text-align: center;
+    padding: 10px;
+    background: green;
+    margin: 20px 15px 0 15px;
+    border-radius: 50px;
+}
+
+.projectlist.update {
+    display: block !important;
+    min-height: 0 !important;
+    pointer-events: all;
+}
+
+.projectlist.update table {
+    border-collapse: unset !important;
+    margin-top: 0 !important;
+}
+
+.projectlist.update thead {
+    pointer-events: all !important;
+}
+
+.projectlist.update #descricao {
+    width: 450%;
+}
+
+td i {
+    font-size: 1.05em;
+    color: var(--terciaria);
+    cursor: pointer;
+}
+
+#functext {
+    text-align: center;
+    margin-left: -30vw;
+}
+
+#logo {
+    pointer-events: none;
+    color: green;
+}
+
+table input {
+    pointer-events: all;
+}
+
+input {
+    border: 1px solid;
+}
+
+#datas p {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.offset-4.col-8.mt-4 {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.offset-4.col-8.mt-4:hover button{
+    background: #691a11;
+}

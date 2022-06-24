@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Gruppo Gakki">
+  <meta name="description" content="Home da ferramenta Yamaha Project Management">
+  <meta name="tags" content="PMS, Yamaha, Projetos">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/5df07a7fcc.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous" defer></script>
+  <script src="/scripts/graficos.js" defer></script>
+  <script src="/scripts/novo_projeto.js" defer></script>
+  <script src="/scripts/alterar_projeto.js" defer></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <title>Alterar projeto... | Yamaha Project Management</title>
+</head>
+<body>
+    <!--Menu vertical e horizontal-->
+    <div class="container">
+      <div class="navbar active">
+        <ul>
+          <li>
+            <a href="/home">
+              <span class="icon">
+                <img src="../Imagens/yamahalogo.svg">
+              </span>
+              <span class="title">
+                <img src="../Imagens/yamahaname.svg">
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="/novo">
+              <span class="icon">
+                <i class="fa-solid fa-circle-plus fa-lg"></i>
+              </span>
+              <span class="title">Adicionar Novo...</span>
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <span class="icon">
+                <i class="fa-solid fa-house fa-lg"></i>
+              </span>
+              <span class="title">Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="/graficos">
+              <span class="icon">
+                <i class="fa-solid fa-chart-line fa-lg"></i>
+              </span>
+              <span class="title">Estatisticas</span>
+            </a>
+          </li>
+          <li>
+            <a href="/tabelaFuncionarios">
+              <span class="icon">
+                <i class="fa-solid fa-table-columns fa-lg"></i>
+              </span>
+              <span class="title">Tabelas</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="main active">
+        <div class="topbar">
+          <div class="toggle">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+          <div class="search">
+            <label>
+              <input type="text" placeholder="Procure Aqui...">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </label>
+          </div>
+          <div class="user">
+            <img src="../Imagens/user_img.png" alt="">
+          </div>
+        </div>
+        <div class="contents">  
+          <!--Container que agrupa os elementos do formulário da página-->
+          <div class="container mt-5">
+            <form action="/updateproject" method="post">
+            <div class="title">
+              <h1 id="adicionar-projeto">Alterar informações do projeto</h1>
+              <p>Atualize as informações do projeto conforme o necessário.</p>
+            </div>
+            <div class="details">
+              <div class="projectlist update">
+                <div class="cardHeader">
+                  <h2>
+                    Informações do Projeto
+                  </h2>
+                </div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Código</th>
+                      <th>Nome</th>
+                      <th>Principal responsável</th>
+                      <th>Governança</th>
+                      <th>Data Inicial</th>
+                      <th>Data Final</th>
+                    </tr>
+                    <tr>
+                      <td> 
+                        <input id="id" name="id" type="hidden" value=<%= projeto.ProjetoID %>> 
+                        <input name="placeholder" type="text" disabled value=<%= projeto.ProjetoID %>> 
+                      </td>
+                      <td>
+                        <input type="text" name="nome" id="nome" max="100" placeholder="Ex. Implantação de um sistema ERP; Desenvolvimento de um novo produto; etc." value=<%= projeto.NomeProjeto %> required> 
+                      </td>
+                      <td>
+                        <input type="text" name="responsavel" id="responsavel" placeholder="Ex. Bianca Sakihira" required value=<%= projeto.PrincipalResponsavel %>>
+                      </td>
+                      <td>
+                        <select name="governanca" id="governanca" required>
+                          <option value=<%= projeto.GovernancaID %> ><%= projeto.Estado %> </option>
+                        </select>
+                      </td>
+                      <td>
+                        <input type="date" id="inicial" name="datainicial" value=<%= projeto.DataInicial %> >
+                      </td>
+                      <td>
+                        <input type="date" id="final" name="datafinal" value=<%= projeto.DataFinal %> >
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Descrição</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <textarea name="descricao" id="descricao" cols="30" rows="5" placeholder="Ex. Sistema para manter controle das entregas do chão de fábrica"><%= projeto.Descricao %> </textarea>
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody id="tableProjects">
+                  </tbody>
+                </table>
+                <div class="offset-4 col-8 mt-4">
+                <button class="btn" onclick="addToastUpdate()">Atualizar projeto</button>
+                </div>
+            </form>
+              </div>
+            </div>
+            <div class="details">
+              <div class="projectlist update">
+                <div class="cardHeader">
+                  <h2>
+                    Atribuir Funcionário
+                  </h2>
+                </div>
+            <!-- Modal -->
+            <!-- Todo -->
+            <div class="todo-container">
+                <div class="status" id="no_status">
+                    <h1>Atribuidos</h1>
+                </div>
+                <div class="status" id="funcdisponiveis">
+                    <h1>Disponíveis</h1>
+                </div>
+            </div>
+              </div>
+            </div>
+        </div>
+            <!--Fim do container que agrupa os elementos do formulário da página-->
+      </div>
+    </div>
+    <div id="overlay"></div>
+    <div id="modal"></div>
+</form>
+</body>
+</html>

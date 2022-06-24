@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Gruppo Gakki">
+    <meta name="description" content="Home da ferramenta Yamaha Project Management">
+    <meta name="tags" content="PMS, Yamaha, Projetos">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/5df07a7fcc.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous" defer></script>
+    <script src="/scripts/index.js" defer></script>
+    <script src="/scripts/graficos.js" defer></script>
+    <script src="/scripts/tabela_funcionarios.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" defer></script>
+    <title>Tabela Funcionários</title>
+</head>
+<body>
+  <!--Menu vertical e horizontal-->
+  <div class="container">
+    <div class="navbar active">
+      <ul>
+        <li>
+          <a href="/home">
+            <span class="icon">
+              <img src="../Imagens/yamahalogo.svg">
+            </span>
+            <span class="title">
+              <img src="../Imagens/yamahaname.svg">
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="/novo">
+            <span class="icon">
+              <i class="fa-solid fa-circle-plus fa-lg"></i>
+            </span>
+            <span class="title">Adicionar Novo...</span>
+          </a>
+        </li>
+        <li>
+          <a href="/home">
+            <span class="icon">
+              <i class="fa-solid fa-house fa-lg"></i>
+            </span>
+            <span class="title">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="/graficos">
+            <span class="icon">
+              <i class="fa-solid fa-chart-line fa-lg"></i>
+            </span>
+            <span class="title">Estatisticas</span>
+          </a>
+        </li>
+        <li>
+          <a href="/tabelaFuncionarios">
+            <span class="icon">
+              <i class="fa-solid fa-table-columns fa-lg"></i>
+            </span>
+            <span class="title">Tabelas</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="main active">
+      <div class="topbar">
+        <div class="toggle">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <!--Barra de pesquisa-->
+
+        <div class="user">
+          <img src="../Imagens/user_img.png" alt="">
+        </div>
+      </div>
+      <!--Tabela de projetos-->
+      <div class="cardBox exp">
+        <div class="details">
+          <div class="projectlist project">
+            <div class="cardHeader">
+              <h2>
+                Projetos
+              </h2>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Nome</th>
+                  <th>Principal responsável</th>
+                  <th>Governança</th>
+                  <th>Editar</th>
+                  <th>Deletar</th>
+                </tr>
+              </thead>
+              <tbody id="tableProjects">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!--Tabela de funcionarios-->
+        <div class="details">
+          <div class="projectlist project">
+            <div class="cardHeader">
+              <h2>
+                Funcionários
+              </h2>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <td>Registro</td>
+                  <td>Nome</td>
+                  <td>Cargo</td>
+                  <td>Horas para Projeto</td>
+                  <td>Estado</td>
+                  <td>Quantidade de Projetos</td>
+                  <td>Editar</td>
+                  <td>Deletar</td>
+                </tr>
+              </thead>
+              <tbody id="tableEmployees">
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Tabela de Funções --> 
+        <div class="details">
+          <div class="projectlist project">
+            <div class="cardHeader">
+              <h2>
+                Funções
+              </h2>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Titulo</th>
+                  <th>Área</th>
+                  <th>Editar</th>
+                  <th>Deletar</th>
+                </tr>
+              </thead>
+              <tbody id="tableFunctions">
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Tabela de Governanças-->
+        <div class="details">
+          <div class="projectlist project">
+            <div class="cardHeader">
+              <h2>
+                Governanças
+              </h2>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>País</th>
+                  <th>Estado</th>
+                  <th>Endereço</th>
+                  <th>Editar</th>
+                  <th>Deletar</th>
+                </tr>
+              </thead>
+              <tbody id="tableGovernances">
+              </tbody>
+            </table>
+          </div>
+        </div>
+</body>
+</html>

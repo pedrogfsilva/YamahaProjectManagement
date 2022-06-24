@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Inteli/OneDrive/Documentos/GitHub/Projeto5/src/database/yamaha.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser query pragmas" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="150"/><column_width id="3" width="5764"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,6:mainFuncao"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE Alocacao(
+	AlocacaoID INTEGER,
+	HorasJaneiro INTEGER,
+	HorasFevereiro INTEGER,
+	HorasMarco INTEGER,
+	HorasAbril INTEGER,
+	HorasMaio INTEGER,
+	HorasJunho INTEGER,
+	HorasJulho INTEGER,
+	HorasAgosto INTEGER,
+	HorasSetembro INTEGER,
+	HorasOutubro INTEGER,
+	HorasNovembro INTEGER,
+	HorasDezembro INTEGER,
+	DataInicialAlocacao DATE,
+	DataFinalAlocacao DATE,
+	ProjetoID INTEGER NOT NULL,
+	FuncionarioID INTEGER NOT NULL,
+	FOREIGN KEY(&quot;ProjetoID&quot;) REFERENCES &quot;Projeto&quot;(&quot;ProjetoID&quot;),
+	FOREIGN KEY(&quot;FuncionarioID&quot;) REFERENCES &quot;Funcionario&quot;(&quot;FuncionarioID&quot;),
+	PRIMARY KEY(&quot;AlocacaoID&quot; AUTOINCREMENT)
+);</sql><current_tab id="0"/></tab_sql></sqlb_project>

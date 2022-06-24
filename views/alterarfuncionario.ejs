@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Gruppo Gakki">
+    <meta name="description" content="Home da ferramenta Yamaha Project Management">
+    <meta name="tags" content="PMS, Yamaha, Projetos">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/5df07a7fcc.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src="/scripts/index.js" defer></script>
+    <script src="/scripts/graficos.js" defer></script>
+    <script src="/scripts/novo_funcionario.js" defer></script>
+    <script src="/scripts/alterar_funcionario.js" defer></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Atualizar Funcionário</title>
+</head>
+<body>
+  <!--Menu vertical e horizontal-->
+  <div class="container">
+    <div class="navbar active">
+      <ul>
+        <li>
+          <a href="/home">
+            <span class="icon">
+              <img src="../Imagens/yamahalogo.svg">
+            </span>
+            <span class="title">
+              <img src="../Imagens/yamahaname.svg">
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="/novo">
+            <span class="icon">
+              <i class="fa-solid fa-circle-plus fa-lg"></i>
+            </span>
+            <span class="title">Adicionar Novo...</span>
+          </a>
+        </li>
+        <li>
+          <a href="/home">
+            <span class="icon">
+              <i class="fa-solid fa-house fa-lg"></i>
+            </span>
+            <span class="title">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="/graficos">
+            <span class="icon">
+              <i class="fa-solid fa-chart-line fa-lg"></i>
+            </span>
+            <span class="title">Estatisticas</span>
+          </a>
+        </li>
+        <li>
+          <a href="/tabelaFuncionarios">
+            <span class="icon">
+              <i class="fa-solid fa-table-columns fa-lg"></i>
+            </span>
+            <span class="title">Tabelas</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!--Barra de pesquisa-->
+    <div class="main active">
+      <div class="topbar">
+        <div class="toggle">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <div class="user">
+          <img src="../Imagens/user_img.png" alt="">
+        </div>
+      </div>
+      <!--Entidade de adicionar novo funcionario-->
+        <div class="contents">
+          <div class="container mt-5">
+            <form action="/updateemployee" method="post">
+              <div class="contents">
+                <div class="container mt-5">
+                  <div class="title">
+                    <h1 class="adicionar-func">Atualizar informações do funcionário</h1>
+                    <p>Atualize as informações conforme o necessário.</p>
+                  </div>
+                  <div class="details">
+                    <div class="projectlist update">
+                      <div class="cardHeader">
+                        <h2>
+                          Informações do Projeto
+                        </h2>
+                      </div>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Código</th>
+                            <th>Nome</th>
+                            <th>Sobrenome</th>
+                            <th>Registro</th>
+                            <th>Governança</th>
+                          </tr>
+                          <tr>
+                            <td> 
+                              <input id="id" name="id" type="hidden" value=<%= funcionario.FuncionarioID %>> 
+                              <input name="placeholder" type="text" disabled value=<%= funcionario.FuncionarioID %>> 
+                            </td>
+                            <td>
+                              <input type="text" name="nome" id="nome" placeholder="Ex. Beatriz, Frederico, Luiz Augusto, Luiz Carlos, Pedro, Sergio, Thainá" value=<%= funcionario.Nome %>  required>
+                            </td>
+                            <td>
+                              <input type="text" name="sobrenome" id="sobrenome" placeholder="Ex. Hirasaki, Schur, Ferreira, Silva, Lucas, Lima" value=<%= funcionario.Sobrenome %> required>
+                            </td>
+                            <td>
+                              <input type="text" name="registro" id="tipo1" placeholder="Ex. Y180522" value=<%= funcionario.Registro %>  required>
+                            </td>
+                            <td>
+                              <select name="governanca" id="tipo2" class="governanca" required>
+                                <option value=<%= funcionario.GovernancaID %> ><%= funcionario.Estado %> </option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>Funcionário Yamaha?</th>
+                            <th>Horas Disponíveis Para Projeto</th>
+                            <th>Cargo</th>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="btn-group mt-3" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked value="1">
+                                <label class="btn btn-outline-primary" for="btnradio1">Sim</label>
+            
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="0">
+                                <label class="btn btn-outline-primary" for="btnradio2">Não</label>
+                              </div>                      
+                            </td>
+                            <td>
+                              <input type="number" name="jornadaTrabalho" id="jornadaTrabalho" placeholder="Ex. 88" value=<%= funcionario.HorasProjetos %>  required>
+                            </td>
+                            <td>
+                              <select name="funcaoID" id="funcaoID" required>
+                                <option value=<%= funcionario.FuncaoID %> ><%= funcionario.Titulo %> </option>
+                              </select>
+                            </td>
+                          </tr>
+                        </thead>
+                      </table>
+                      <div class="offset-4 col-8 mt-4">
+                        <button id="createEmployee" type="submit" class="btn" onclick="addToastUpdate()">Atualizar funcionário</button>
+                      </div>
+                  </div>
+            </form>
+      </div>
+    </div>
+    </div>
+</body>
+</html>

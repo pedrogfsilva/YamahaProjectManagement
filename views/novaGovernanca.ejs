@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Gruppo Gakki">
+    <meta name="description" content="Home da ferramenta Yamaha Project Management">
+    <meta name="tags" content="PMS, Yamaha, Projetos">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/5df07a7fcc.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous" defer></script>
+    <script src="/scripts/index.js" defer></script>
+    <script src="/scripts/graficos.js" defer></script>
+    <script src="/scripts/nova_governanca.js" defer></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Cadastrar Funcionário</title>
+</head>
+<body>
+  <!--Menu vertical e horizontal-->
+  <div class="container">
+    <div class="navbar active">
+      <ul>
+        <li>
+          <a href="/home">
+            <span class="icon">
+              <img src="../Imagens/yamahalogo.svg">
+            </span>
+            <span class="title">
+              <img src="../Imagens/yamahaname.svg">
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="/novo">
+            <span class="icon">
+              <i class="fa-solid fa-circle-plus fa-lg"></i>
+            </span>
+            <span class="title">Adicionar Novo...</span>
+          </a>
+        </li>
+        <li>
+          <a href="/home">
+            <span class="icon">
+              <i class="fa-solid fa-house fa-lg"></i>
+            </span>
+            <span class="title">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="/graficos">
+            <span class="icon">
+              <i class="fa-solid fa-chart-line fa-lg"></i>
+            </span>
+            <span class="title">Estatisticas</span>
+          </a>
+        </li>
+        <li>
+          <a href="/tabelaFuncionarios">
+            <span class="icon">
+              <i class="fa-solid fa-table-columns fa-lg"></i>
+            </span>
+            <span class="title">Tabelas</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="main active">
+      <div class="topbar">
+        <div class="toggle">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <div class="user">
+          <img src="../Imagens/user_img.png" alt="">
+        </div>
+      </div>
+      <!--Entidade de adicinar nova função-->
+      <form action="/governance" method="post">
+        <div class="contents">
+          <div class="container mt-5">
+            <div class="title">
+              <h1 class="adicionar-func">Adicionar nova Governança</h1>
+              <p id="functext">Insira aqui uma nova governanca (As informações aqui inseridas serão acessíveis na tela nova função e novo funcionario).</p>
+            </div>
+            <div class="rows">
+              <div class="row1">
+                <div class="offset-3 col-3">
+                    <label for="govpais">País</label>
+                    <br>
+                    <input type="text" name="govpais" id="govpais" placeholder="Ex. Brasil, Argentina, Chile, etc. " required>
+                </div>
+                <div class="col-8">
+                    <label for="govest">Estado</label>
+                    <br>
+                    <input type="text" name="govest" id="govest" placeholder="Ex. São Paulo, Buenos Aires, etc." required>
+                </div>
+                <div class="col-7">
+                    <label for="govend">Endereço da Sede</label>
+                    <br>
+                    <input type="text" name="govend" id="govend" placeholder="Ex. Rua João Jones, 2803" required>
+                </div>
+              </div>
+          <div class="row5">
+            <div class="offset-4 col-8 mt-4">
+              <button id="createGov" class="btn" onclick="addToast()">Adicionar nova governança</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+    </div>
+</body>
+</html>
